@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>DOKUMENTASI SUBID PEMERINTAHAN PPMP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1b365d;
+            --primary-light: #2c5282;
+            --accent: #319795;
+            --accent-gradient: linear-gradient(135deg, #319795 0%, #2b6cb0 100%);
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --radius: 16px;
+            --shadow: 0 10px 25px -5px rgba(27, 54, 93, 0.08), 0 8px 10px -6px rgba(27, 54, 93, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; overflow-x: hidden; }
+
+        .bg-shape-1 {
+            position: fixed; top: -150px; right: -150px; width: 450px; height: 450px;
+            background: linear-gradient(135deg, rgba(49, 151, 149, 0.15), rgba(43, 108, 176, 0.1));
+            border-radius: 50%; z-index: -1; filter: blur(40px); animation: float 8s ease-in-out infinite alternate;
+        }
+        .bg-shape-2 {
+            position: fixed; bottom: -150px; left: -150px; width: 500px; height: 500px;
+            background: linear-gradient(135deg, rgba(27, 54, 93, 0.12), rgba(49, 151, 149, 0.08));
+            border-radius: 50%; z-index: -1; filter: blur(50px); animation: float 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(20px) scale(1.05); }
+        }
+
+        header {
+            background: var(--primary); color: white; padding: 30px 20px; text-align: center;
+            border-bottom-left-radius: 35px; border-bottom-right-radius: 35px;
+            box-shadow: var(--shadow); position: relative; overflow: hidden;
+        }
+        .header-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        header h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 8px; }
+        header p { font-size: 0.9rem; opacity: 0.85; }
+
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+
+        .nav-tabs {
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 25px;
+            scrollbar-width: thin;
+        }
+        .nav-tabs::-webkit-scrollbar { height: 6px; }
+        .nav-tabs::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 10px; }
+        
+        .tab-btn {
+            background: var(--card-bg); border: 2px solid #e2e8f0; padding: 12px 18px; border-radius: 12px;
+            font-weight: 600; font-size: 0.85rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tab-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        .tab-btn.active {
+            background: var(--accent-gradient); color: white; border-color: transparent;
+            box-shadow: 0 4px 12px rgba(49, 151, 149, 0.3); transform: translateY(-2px);
+        }
+
+        .panel {
+            background: var(--card-bg); border-radius: var(--radius); padding: 30px;
+            box-shadow: var(--shadow); display: none; animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        .panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .panel-title { font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+
+        .grid-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 30px; }
+        @media(max-width: 900px) { .grid-layout { grid-template-columns: 1fr; } }
+
+        .form-box { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px dashed #cbd5e0; position: relative; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
+        .form-control {
+            width: 100%; padding: 10px 14px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 0.88rem;
+            outline: none; transition: all 0.2s; background: white;
+        }
+        .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(49, 151, 149, 0.15); }
+        
+        .btn-submit {
+            background: var(--accent-gradient); color: white; border: none; width: 100%; padding: 12px;
+            border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-submit:hover { opacity: 0.92; transform: translateY(-1px); }
+
+        .table-responsive { width: 100%; overflow-x: auto; max-height: 420px; border-radius: 8px; border: 1px solid #edf2f7; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+        th { background: #f7fafc; color: var(--text-muted); font-weight: 700; padding: 12px 15px; position: sticky; top: 0; z-index: 10; border-bottom: 2px solid #edf2f7; }
+        td { padding: 12px 15px; border-bottom: 1px solid #edf2f7; color: var(--text-main); }
+        tr:hover { background: #f8fafc; }
+
+        .action-btns { display: flex; gap: 6px; }
+        .btn-action {
+            padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s; text-decoration: none;
+        }
+        .btn-preview { background: #ebf8ff; color: #3182ce; }
+        .btn-preview:hover { background: #bee3f8; }
+        .btn-dl { background: #f0fff4; color: #38a169; }
+        .btn-dl:hover { background: #c6f6d5; }
+        .btn-del { background: #fff5f5; color: #e53e3e; }
+        .btn-del:hover { background: #fed7d7; }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px); z-index: 1000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+        .modal-container {
+            background: white; width: 90%; max-width: 900px; height: 85vh; border-radius: var(--radius);
+            display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .modal-header {
+            padding: 15px 20px; background: var(--primary); color: white; display: flex;
+            justify-content: space-between; align-items: center; font-weight: 700;
+        }
+        .modal-close { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
+        .modal-body { flex: 1; background: #2d3748; display: flex; align-items: center; justify-content: center; }
+        .modal-body iframe { width: 100%; height: 100%; border: none; }
+
+        .loader-overlay {
+            position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(255,255,255,0.85);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10;
+            border-radius: 12px; display: none;
+        }
+        .spinner {
+            width: 36px; height: 36px; border: 4px solid #cbd5e0; border-top-color: var(--accent);
+            border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 10px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .drive-link-banner {
+            margin-top: 25px; background: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+            border: 1px solid #b2f5ea; padding: 15px 20px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem;
+        }
+        .drive-link-banner a { color: var(--primary); font-weight: 700; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-shape-1"></div>
+    <div class="bg-shape-2"></div>
+
+    <header>
+        <div class="header-content">
+            <h1>DOKUMENTASI SUBID PEMERINTAHAN PPMP</h1>
+            <p>Arsip Digital Terpadu – Terintegrasi Google Drive & Google Spreadsheet</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs" id="navTabs">
+            <button class="tab-btn active" onclick="switchTab('TMMD')"><i class="fa-solid fa-folder-open"></i> 1. TMMD</button>
+            <button class="tab-btn" onclick="switchTab('RAT NANGKIS')"><i class="fa-solid fa-folder-open"></i> 2. RAT NANGKIS</button>
+            <button class="tab-btn" onclick="switchTab('LP2KD')"><i class="fa-solid fa-folder-open"></i> 3. LP2KD</button>
+            <button class="tab-btn" onclick="switchTab('LAPORAN OPPKPKE')"><i class="fa-solid fa-folder-open"></i> 4. LAPORAN OPPKPKE</button>
+            <button class="tab-btn" onclick="switchTab('SK PENGELOLA DTSEN')"><i class="fa-solid fa-folder-open"></i> 5. SK PENGELOLA DTSEN</button>
+            <button class="tab-btn" onclick="switchTab('KELENGKAPAN DTSEN')"><i class="fa-solid fa-folder-open"></i> 6. KELENGKAPAN DTSEN</button>
+        </div>
+
+        <div id="panelsContainer"></div>
+
+        <div class="drive-link-banner">
+            <span><i class="fa-brands fa-google-drive" style="color: #319795; margin-right: 6px;"></i> Folder Utama Penyimpanan Arsip Google Drive:</span>
+            <a href="https://drive.google.com/drive/folders/1GA0clpTf6E0Lc1g2ivGQzdrgrrQBp9VS?usp=sharing" target="_blank">
+                Buka Drive <i class="fa-solid fa-external-link-alt"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal Pratinjau -->
+    <div class="modal-overlay" id="previewModal" onclick="closeModal()">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span id="modalTitle"><i class="fa-solid fa-file-pdf"></i> Pratinjau Dokumen</span>
+                <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <iframe id="previewIframe" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const categories = [
+            { id: 'TMMD', title: '1. TMMD', fields: ['judul', 'tahun', 'nomorSk'] },
+            { id: 'RAT NANGKIS', title: '2. RAT NANGKIS', fields: ['judul'] },
+            { id: 'LP2KD', title: '3. LP2KD', fields: ['judul'] },
+            { id: 'LAPORAN OPPKPKE', title: '4. LAPORAN OPPKPKE', fields: ['judul', 'tahun', 'semester'] },
+            { id: 'SK PENGELOLA DTSEN', title: '5. SK PENGELOLA DTSEN', fields: ['judul'] },
+            { id: 'KELENGKAPAN DTSEN', title: '6. KELENGKAPAN DTSEN', fields: ['judul', 'tahun', 'periode'] }
+        ];
+
+        let globalData = {};
+
+        window.onload = function() {
+            renderPanels();
+            loadData();
+        }
+
+        function renderPanels() {
+            const container = document.getElementById('panelsContainer');
+            let html = '';
+
+            categories.forEach((cat, index) => {
+                let activeClass = index === 0 ? 'active' : '';
+                html += `
+                    <div class="panel ${activeClass}" id="panel-${cat.id}">
+                        <div class="panel-title"><i class="fa-solid fa-folder-closed"></i> ${cat.title}</div>
+                        <div class="grid-layout">
+                            <div class="form-box">
+                                <div class="loader-overlay" id="loader-${cat.id}">
+                                    <div class="spinner"></div>
+                                    <span style="font-size:0.85rem; font-weight:600; color:var(--primary);">Sedang Mengunggah File...</span>
+                                </div>
+                                <h3 style="font-size:0.95rem; font-weight:700; color:var(--primary); margin-bottom:15px;"><i class="fa-solid fa-cloud-arrow-up"></i> Unggah Dokumen Baru</h3>
+                                <form onsubmit="handleUpload(event, '${cat.id}')">
+                                    <div class="form-group">
+                                        <label>Judul Dokumen</label>
+                                        <input type="text" class="form-control" name="judul" required placeholder="Masukkan judul...">
+                                    </div>
+                `;
+
+                if (cat.fields.includes('tahun')) {
+                    html += `<div class="form-group"><label>Tahun</label><input type="number" class="form-control" name="tahun" placeholder="Contoh: 2026"></div>`;
+                }
+                if (cat.fields.includes('nomorSk')) {
+                    html += `<div class="form-group"><label>Nomor SK</label><input type="text" class="form-control" name="nomorSk" placeholder="Nomor SK..."></div>`;
+                }
+                if (cat.fields.includes('semester')) {
+                    html += `<div class="form-group"><label>Semester</label><select class="form-control" name="semester"><option value="Semester I">Semester I</option><option value="Semester II">Semester II</option></select></div>`;
+                }
+                if (cat.fields.includes('periode')) {
+                    html += `<div class="form-group"><label>Periode</label><input type="text" class="form-control" name="periode" placeholder="Triwulan I / Bulanan"></div>`;
+                }
+
+                html += `
+                                    <div class="form-group">
+                                        <label>Pilih Dokumen</label>
+                                        <input type="file" class="form-control" name="file" required style="padding:8px;">
+                                    </div>
+                                    <button type="submit" class="btn-submit"><i class="fa-solid fa-upload"></i> Unggah ke Drive</button>
+                                </form>
+                            </div>
+
+                            <div>
+                                <h3 style="font-size:0.95rem; font-weight:700; color:var(--primary); margin-bottom:15px;"><i class="fa-solid fa-list"></i> Daftar Arsip</h3>
+                                <div class="table-responsive">
+                                    <table>
+                                        <thead><tr id="thead-${cat.id}"><th>Judul</th><th>Aksi</th></tr></thead>
+                                        <tbody id="tbody-${cat.id}">
+                                            <tr><td colspan="2" style="text-align:center; color:var(--text-muted);">Memuat data...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function switchTab(catId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById('panel-' + catId).classList.add('active');
+        }
+
+        function loadData() {
+            google.script.run.withSuccessHandler(function(res) {
+                if (res && res.success) {
+                    globalData = res.data;
+                    populateTables();
+                } else {
+                    console.error('Error saat membaca data:', res ? res.message : 'Unknown error');
+                }
+            }).getAllFilesData();
+        }
+
+        function populateTables() {
+            categories.forEach(cat => {
+                let rows = globalData[cat.id] || [];
+                let tbody = document.getElementById(`tbody-${cat.id}`);
+                let thead = document.getElementById(`thead-${cat.id}`);
+                
+                let headersHTML = `<th>Judul</th>`;
+                if (cat.fields.includes('tahun')) headersHTML += `<th>Tahun</th>`;
+                if (cat.fields.includes('nomorSk')) headersHTML += `<th>No. SK</th>`;
+                if (cat.fields.includes('semester')) headersHTML += `<th>Semester</th>`;
+                if (cat.fields.includes('periode')) headersHTML += `<th>Periode</th>`;
+                headersHTML += `<th>File</th><th>Aksi</th>`;
+                thead.innerHTML = headersHTML;
+
+                if (rows.length === 0) {
+                    let colSpan = cat.fields.length + 2;
+                    tbody.innerHTML = `<tr><td colspan="${colSpan}" style="text-align:center; color:var(--text-muted); padding:20px;">Belum ada data.</td></tr>`;
+                    return;
+                }
+
+                let html = '';
+                rows.forEach(row => {
+                    let fileId = row['File ID'];
+                    let viewUrl = row['URL View'] || '';
+                    let downloadUrl = row['URL Download'] || '#';
+                    let fileName = row['Nama File'] || 'Dokumen';
+                    let title = row['Judul'] || '-';
+
+                    html += `<tr>`;
+                    html += `<td><strong>${title}</strong></td>`;
+                    if (cat.fields.includes('tahun')) html += `<td>${row['Tahun'] || '-'}</td>`;
+                    if (cat.fields.includes('nomorSk')) html += `<td>${row['Nomor SK'] || '-'}</td>`;
+                    if (cat.fields.includes('semester')) html += `<td>${row['Semester'] || '-'}</td>`;
+                    if (cat.fields.includes('periode')) html += `<td>${row['Periode'] || '-'}</td>`;
+                    html += `<td><span style="font-size:0.8rem; color:var(--text-muted);">${fileName}</span></td>`;
+                    html += `<td>
+                        <div class="action-btns">
+                            <button class="btn-action btn-preview" onclick="openPreview('${viewUrl}', '${title}')" title="Pratinjau"><i class="fa-solid fa-eye"></i></button>
+                            <a href="${downloadUrl}" class="btn-action btn-dl" target="_blank" title="Unduh"><i class="fa-solid fa-download"></i></a>
+                            <button class="btn-action btn-del" onclick="deleteItem('${cat.id}', '${fileId}')" title="Hapus"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>`;
+                    html += `</tr>`;
+                });
+                tbody.innerHTML = html;
+            });
+        }
+
+        function handleUpload(event, categoryId) {
+            event.preventDefault();
+            const form = event.target;
+            const loader = document.getElementById(`loader-${categoryId}`);
+            loader.style.display = 'flex';
+
+            const fileInput = form.querySelector('input[type="file"]');
+            const file = fileInput.files[0];
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const payload = {
+                    category: categoryId,
+                    judul: form.querySelector('[name="judul"]').value,
+                    tahun: form.querySelector('[name="tahun"]') ? form.querySelector('[name="tahun"]').value : '',
+                    nomorSk: form.querySelector('[name="nomorSk"]') ? form.querySelector('[name="nomorSk"]').value : '',
+                    semester: form.querySelector('[name="semester"]') ? form.querySelector('[name="semester"]').value : '',
+                    periode: form.querySelector('[name="periode"]') ? form.querySelector('[name="periode"]').value : '',
+                    fileName: file.name,
+                    mimeType: file.type,
+                    fileContent: e.target.result
+                };
+
+                google.script.run.withSuccessHandler(function(response) {
+                    loader.style.display = 'none';
+                    if (response.success) {
+                        alert(response.message);
+                        form.reset();
+                        loadData();
+                    } else {
+                        alert('Gagal: ' + response.message);
+                    }
+                }).uploadFileToDrive(payload);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function openPreview(viewUrl, title) {
+            if (!viewUrl) {
+                alert('Pratinjau tidak tersedia.');
+                return;
+            }
+            let embedUrl = viewUrl.replace(/\/view.*/, '/preview');
+            document.getElementById('modalTitle').innerHTML = `<i class="fa-solid fa-file-lines" style="margin-right:8px;"></i> ${title}`;
+            document.getElementById('previewIframe').src = embedUrl;
+            document.getElementById('previewModal').classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('previewModal').classList.remove('open');
+            document.getElementById('previewIframe').src = '';
+        }
+
+        function deleteItem(category, fileId) {
+            if (confirm('Hapus dokumen ini dari arsip?')) {
+                google.script.run.withSuccessHandler(function(res) {
+                    if (res.success) {
+                        loadData();
+                    } else {
+                        alert('Gagal menghapus: ' + res.message);
+                    }
+                }).deleteFileRecord(category, fileId);
+            }
+        }
+    </script>
+</body>
+</html>
